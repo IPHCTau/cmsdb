@@ -33,7 +33,7 @@ campaign_run3_2022_preEE_nano_v12 = Campaign(
         "version": 12,
         "postfix": "",
     },
-    tags={"preEE"},
+    tags={"preEE", "official"},
 )
 
 

@@ -1087,20 +1087,77 @@ cpn.add_dataset(
 ####################################################################################################
 
 # TODO: add corresponding process
-# cpn.add_dataset(
-#     name="ttz_amcatnlo",
-#     id=14796050,
-#     processes=[procs.ttz],
-#     info=dict(
-#         nominal=DatasetInfo(
-#             keys=[
-#                 "/TTZ-ZtoQQ-1Jets_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v2/NANOAODSIM",  # noqa
-#             ],
-#             n_files=24,
-#             n_events=376687,
-#         ),
-#     ),
-# )
+cpn.add_dataset(
+    name="ttw_wlnu_amcatnlo",
+    id=14836097,
+    processes=[procs.ttw_wlnu],
+    keys=[
+        "/TTLNu-1Jets_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v1/NANOAODSIM",  # noqa
+    ],
+    n_files=1,
+    n_events=111308,
+)
+
+cpn.add_dataset(
+    name="ttz_zqq_amcatnlo",
+    id=14796050,
+    processes=[procs.ttz_zqq],
+    info=dict(
+        nominal=DatasetInfo(
+            keys=[
+                "/TTZ-ZtoQQ-1Jets_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v2/NANOAODSIM",  # noqa
+            ],
+            n_files=24,
+            n_events=376687,
+        ),
+    ),
+)
+
+cpn.add_dataset(
+    name="ttz_zll_m4to50_amcatnlo",
+    id=14793589,
+    processes=[procs.ttz_zll_m4to50],
+    info=dict(
+        nominal=DatasetInfo(
+            keys=[
+                "/TTLL_MLL-4to50_TuneCP5_13p6TeV_amcatnlo-pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v2/NANOAODSIM",  # noqa
+            ],
+            n_files=25,
+            n_events=300000,
+        ),
+    ),
+)
+
+cpn.add_dataset(
+    name="ttz_zll_m50toinf_amcatnlo",
+    id=14793929,
+    processes=[procs.ttz_zll_m50toinf],
+    info=dict(
+        nominal=DatasetInfo(
+            keys=[
+                "/TTLL_MLL-50_TuneCP5_13p6TeV_amcatnlo-pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v2/NANOAODSIM",  # noqa
+            ],
+            n_files=28,
+            n_events=400000,
+        ),
+    ),
+)
+
+cpn.add_dataset(
+    name="ttz_znunu_amcatnlo",
+    id=14881329,
+    processes=[procs.ttz_znunu],
+    info=dict(
+        nominal=DatasetInfo(
+            keys=[
+                "/TTNuNu_TuneCP5_13p6TeV_amcatnlo-pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v2/NANOAODSIM",  # noqa
+            ],
+            n_files=29,
+            n_events=498544,
+        ),
+    ),
+)
+
 cpn.add_dataset(
     name="ttzz_madgraph",
     id=14800072,

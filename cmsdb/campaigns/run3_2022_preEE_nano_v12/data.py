@@ -25,6 +25,7 @@ cpn.add_dataset(
     n_events=138427345,
     aux={
         "era": "C",
+        "jec_era": "RunCD",
     },
 )
 
@@ -40,6 +41,7 @@ cpn.add_dataset(
     n_events=75468381,
     aux={
         "era": "D",
+        "jec_era": "RunCD",
     },
 )
 
@@ -91,6 +93,7 @@ cpn.add_dataset(
     n_events=263689151,
     aux={
         "era": "C",
+        "jec_era": "RunCD",
     },
 )
 
@@ -106,6 +109,7 @@ cpn.add_dataset(
     n_events=89134996,
     aux={
         "era": "D",
+        "jec_era": "RunCD",
     },
 )
 
@@ -157,6 +161,7 @@ cpn.add_dataset(
     n_events=15768439,
     aux={
         "era": "C",
+        "jec_era": "RunCD",
     },
 )
 
@@ -172,5 +177,72 @@ cpn.add_dataset(
     n_events=8007031,
     aux={
         "era": "D",
+        "jec_era": "RunCD",
+    },
+)
+
+# Tau
+cpn.add_dataset(
+    name="data_tau_c",
+    id=14784173,
+    is_data=True,
+    processes=[procs.data_tau],
+    keys=[
+        "/Tau/Run2022C-22Sep2023-v1/NANOAOD",  # noqa
+    ],
+    n_files=34,
+    n_events=25875389,
+    aux={
+        "era": "C",
+        "jec_era": "RunCD",
+    },
+)
+
+cpn.add_dataset(
+    name="data_tau_d",
+    id=14783294,
+    is_data=True,
+    processes=[procs.data_tau],
+    keys=[
+        "/Tau/Run2022D-22Sep2023-v1/NANOAOD",  # noqa
+    ],
+    n_files=26,
+    n_events=16686692,
+    aux={
+        "era": "D",
+        "jec_era": "RunCD",
+    },
+)
+
+# Jet/MET
+cpn.add_dataset(
+    name="data_met_c",
+    id=14784135,
+    is_data=True,
+    processes=[procs.data_met],
+    keys=[
+        "/JetMET/Run2022C-22Sep2023-v1/NANOAOD",  # noqa
+    ],
+    n_files=206,
+    n_events=169187457,
+    aux={
+        "era": "C",
+        "jec_era": "RunCD",
+    },
+)
+
+cpn.add_dataset(
+    name="data_met_d",
+    id=14809508,
+    is_data=True,
+    processes=[procs.data_met],
+    keys=[
+        "/JetMET/Run2022D-22Sep2023-v1/NANOAOD",  # noqa
+    ],
+    n_files=100,
+    n_events=100853361,
+    aux={
+        "era": "D",
+        "jec_era": "RunCD",
     },
 )

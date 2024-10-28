@@ -36,6 +36,8 @@ __all__ = [
     "z_qq_ht200to400", "z_qq_ht400to600", "z_qq_ht600to800", "z_qq_ht800toinf",
     "z_qq_pt100to200_1j", "z_qq_pt100to200_2j", "z_qq_pt200to400_1j", "z_qq_pt200to400_2j",
     "z_qq_pt400to600_1j", "z_qq_pt400to600_2j", "z_qq_pt600toinf_1j", "z_qq_pt600toinf_2j",
+    "z_tautau",
+    "z_tautau_3mu_m60to120", "z_tautau_6mu_m60to120",
     "w",
     "w_taunu", "w_munu",
     "w_lnu",
@@ -792,6 +794,36 @@ z_qq_pt600toinf_2j = z_qq.add_process(
         # XSDB
         13.6: Number(0.4459, {"total": 0.002084}),
     },
+)
+
+# Z -> taus
+# Source for Run3 XS: XSDB
+# https://xsecdb-xsdb-official.app.cern.ch/xsdb/?columns=67108863&currentPage=0&pageSize=10&searchQuery=DAS%3DZto2Tauto3Mu_M-60to120
+
+z_tautau = z.add_process(
+    name="z_tautau",
+    id=55300,
+    label=rf"{z.label} (Z $\rightarrow$ $\tau\tau$)",
+)
+
+z_tautau_3mu_m60to120 = z_tautau.add_process(
+    name="z_tautau_3mu_m60to120",
+    id=55310,
+    label=rf"{z.label} (Z $\rightarrow$ $\tau\tau$) (3$\mu$)",
+    xsecs = {
+        13.6: Number(1798.0, {"tot": 15.78	}),
+    }
+)
+
+# Source for XS:
+# https://xsecdb-xsdb-official.app.cern.ch/xsdb/?columns=67108863&currentPage=0&pageSize=10&searchQuery=DAS%3DZto2Tauto6Mu_M-60to120
+z_tautau_6mu_m60to120 = z_tautau.add_process(
+    name="z_tautau_6mu_m60to120",
+    id=55101,
+    label=rf"{z.label} (Z $\rightarrow$ $\tau\tau$) (3$\mu$)",
+    xsecs = {
+        13.6: Number(1791.0, {"tot": 15.82	}),
+    }
 )
 
 #
