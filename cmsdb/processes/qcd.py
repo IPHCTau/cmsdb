@@ -87,6 +87,8 @@ qcd = Process(
     name="qcd",
     id=30000,
     label="QCD",
+    xsecs={13: Number(0.1),
+           13.6: Number(0.1)},  # TODO
 )
 
 

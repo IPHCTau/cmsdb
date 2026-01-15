@@ -24,7 +24,7 @@ __all__ = [
     "ttw", "ttw_wlnu", "ttw_wqq",
     "ttvv",
     "ttzz", "ttwz", "ttww",
-    "tttt",
+    "ttwh", "ttzh",
 ]
 
 
@@ -569,90 +569,43 @@ ttww = ttvv.add_process(
 )
 
 # define the combined ttvv cross section as the sum of the three channels
-for xs in (13, 13.6):
-    ttvv.set_xsec(
-        xs,
-        ttzz.get_xsec(xs) + ttwz.get_xsec(xs) + ttww.get_xsec(xs),
-    )
-ttvv.set_xsec(
-    13,
-    ttzz.get_xsec(13) + ttwz.get_xsec(13) + ttww.get_xsec(13),
-)
+#for ecm in (13, 13.6):
+#    ttvv.set_xsec(
+#        ecm,
+#        ttzz.get_xsec(ecm) + ttwz.get_xsec(ecm) + ttww.get_xsec(ecm),
+#    )
 
-#
-# 4 top quarks
-#
 
-tttt = Process(
-    name="tttt",
+ttwh = ttvv.add_process(
+    name="ttwh",
     id=4400,
-    label=r"$t\bar{t}t\bar{t}$",
     xsecs={
-        # source: https://www.arxiv.org/abs/2212.03259
-        13: Number(13.37e-03, {
-            "scale": (0.48, 1.52),
-            "pdf": 0.92,
-        }),
-        13.6: Number(15.82e-03, {
-            "scale": (0.24, 1.83),
-            "pdf": 1.06,
-        }),
+        13: (
+            Number(2705E-6, {"scale": (0.099j, 0.106j), "pdf": 0.027j}) +
+            Number(1179E-6, {"scale": 0.112j, "pdf": 0.037j})
+        ),
+        # 13.6 from GenXSecAnalyzer:
+        # https://xsecdb-xsdb-official.app.cern.ch/xsdb/?columns=67108863&currentPage=0&pageSize=10&searchQuery=DAS%3DTTWH_TuneCP5_13p6TeV_madgraph-pythia8 # noqa
+        13.6: Number(0.001252, {"tot": 4.375e-7}),  # might need a k-factor of 1.13 here
     },
 )
 
-#
-# top quarks + photons
-#
-
-
-# ttg NLO k-factor taken from: https://cms.cern.ch/iCMS/jsp/db_notes/noteInfo.jsp?cmsnoteid=CMS%20AN-2020/186 (v14)
-k_factor_ttg = 1.4852
-ttg = Process(
-    name="ttg",
+ttzh = ttvv.add_process(
+    name="ttzh",
     id=4500,
-    label=r"$t\bar{t} + \gamma$",
-)
-
-ttg_pt10to100 = ttg.add_process(
-    name="ttg_pt10to100",
-    id=4510,
-    label=rf"{ttg.label}, $p_T^{{\gamma}} > 10 GeV$",
     xsecs={
-        13.6: Number(4.216, {"tot": 0.02245}) * k_factor_ttg,  # source: https://xsecdb-xsdb-official.app.cern.ch/xsdb/?columns=39845888&currentPage=0&pageSize=10&searchQuery=DAS%3DTTG-1Jets_PTG-10to100_TuneCP5_13p6TeV_amcatnloFXFXold-pythia8  # noqa: E501
+        13: (
+            Number(2705E-6, {"scale": (0.099j, 0.106j), "pdf": 0.027j}) +
+            Number(1179E-6, {"scale": 0.112j, "pdf": 0.037j})
+        ),
+        # 13.6 from GenXSecAnalyzer:
+        # https://xsecdb-xsdb-official.app.cern.ch/xsdb/?columns=67108863&currentPage=0&pageSize=10&searchQuery=DAS%3DTTZH_TuneCP5_13p6TeV_madgraph-pythia8 # noqa
+        13.6: Number(0.001288, {"tot": 4.101e-7}),  # might need a k-factor of 1.13 here
     },
 )
 
-ttg_pt100to200 = ttg.add_process(
-    name="ttg_pt100to200",
-    id=4520,
-    label=rf"{ttg.label}, $100 GeV < p_T^{{\gamma}} < 200 GeV$",
-    xsecs={
-        13.6: Number(0.4114, {"tot": 0.002858}) * k_factor_ttg,  # source: https://xsecdb-xsdb-official.app.cern.ch/xsdb/?columns=39845888&currentPage=0&pageSize=10&searchQuery=DAS%3DTTG-1Jets_PTG-100to200_TuneCP5_13p6TeV_amcatnloFXFXold-pythia8  # noqa: E501
-    },
-)
-
-ttg_pt200toinf = ttg.add_process(
-    name="ttg_pt200toinf",
-    id=4530,
-    label=rf"{ttg.label}, $p_T^{{\gamma}} > 200 GeV$",
-    xsecs={
-        13.6: Number(0.1284, {"tot": 0.0009248}) * k_factor_ttg,  # source: https://xsecdb-xsdb-official.app.cern.ch/xsdb/?columns=39845888&currentPage=0&pageSize=10&searchQuery=DAS%3DTTG-1Jets_PTG-200_TuneCP5_13p6TeV_amcatnloFXFXold-pythia8  # noqa: E501
-    },
-)
-
-# TODO: are there other top + gamma processes? Is it necessary to separate tg processes?
-tg = Process(
-    name="tg",
-    id=4600,
-    label=r"$t + \gamma$",
-)
-
-tgqb = tg.add_process(
-    name="tgqb",
-    id=4610,
-    label=r"$t\gamma qb$",
-    xsecs={
-        13: Number(2.967),
-        13.6: Number(3.873, {"tot": 0.006143}),  # source: https://xsecdb-xsdb-official.app.cern.ch/xsdb/?columns=67108863&currentPage=0&pageSize=10&searchQuery=DAS%3DTGQB-4FS_TuneCP5_13p6TeV_amcatnlo-pythia8  # noqa: E501
-    },
-)
+for ecm in (13, 13.6):
+    ttvv.set_xsec(
+        ecm,
+        ttzz.get_xsec(ecm) + ttwz.get_xsec(ecm) + ttww.get_xsec(ecm) + ttwh.get_xsec(ecm) + ttzh.get_xsec(ecm),
+    )
