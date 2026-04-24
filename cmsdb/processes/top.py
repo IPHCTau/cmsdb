@@ -8,8 +8,7 @@ __all__ = [
     "tt",
     "tt_sl", "tt_dl", "tt_fh",
     "st",
-    "st_tchannel", "st_tchannel_t", "st_tchannel_t_had", "st_tchannel_t_lep", "st_tchannel_tbar",
-    "st_tchannel_tbar_had", "st_tchannel_tbar_lep",
+    "st_tchannel", "st_tchannel_t", "st_tchannel_tbar",
     "st_twchannel", "st_twchannel_t", "st_twchannel_tbar",
     "st_twchannel_t_sl", "st_twchannel_tbar_sl",
     "st_twchannel_t_dl", "st_twchannel_tbar_dl",
@@ -17,8 +16,6 @@ __all__ = [
     "st_schannel", "st_schannel_lep", "st_schannel_had",
     "st_schannel_t", "st_schannel_t_lep", "st_schannel_t_had",
     "st_schannel_tbar", "st_schannel_tbar_lep", "st_schannel_tbar_had",
-    "ttg", "ttg_pt10to100", "ttg_pt100to200", "ttg_pt200toinf",
-    "tg", "tgqb",
     "ttv",
     "ttz", "ttz_zqq", "ttz_zlep_m10toinf", "ttz_zll_m4to50", "ttz_zll_m50toinf", "ttz_znunu",
     "ttw", "ttw_wlnu", "ttw_wqq",
@@ -148,21 +145,8 @@ st_tchannel_t = st_tchannel.add_process(
             mtop=(1.3, 0.9),
             E_beam=(0.4, 0.3),
             integration=0.1,
-
         )),
     },
-)
-
-st_tchannel_t_had = st_tchannel_t.add_process(
-    name="st_tchannel_t_had",
-    id=2111,
-    xsecs=multiply_xsecs(st_tchannel_t, const.br_w.had),
-)
-
-st_tchannel_t_lep = st_tchannel_t.add_process(
-    name="st_tchannel_t_lep",
-    id=2112,
-    xsecs=multiply_xsecs(st_tchannel_t, const.br_w.lep),
 )
 
 st_tchannel_tbar = st_tchannel.add_process(
@@ -184,18 +168,6 @@ st_tchannel_tbar = st_tchannel.add_process(
             integration=0.1,
         )),
     },
-)
-
-st_tchannel_tbar_had = st_tchannel_tbar.add_process(
-    name="st_tchannel_tbar_had",
-    id=2121,
-    xsecs=multiply_xsecs(st_tchannel_tbar, const.br_w.had),
-)
-
-st_tchannel_tbar_lep = st_tchannel_t.add_process(
-    name="st_tchannel_tbar_lep",
-    id=2122,
-    xsecs=multiply_xsecs(st_tchannel_tbar, const.br_w.lep),
 )
 
 st_twchannel = st.add_process(
@@ -371,12 +343,12 @@ st_schannel_tbar_had = st_schannel_tbar.add_process(
 # define the combined single top cross section as the sum of the three channels
 st.set_xsec(
     13,
-    st_tchannel.get_xsec(13) + st_twchannel.get_xsec(13) + st_schannel.get_xsec(13),
+    st_tchannel.get_xsec(13) + st_twchannel.get_xsec(13), # + st_schannel.get_xsec(13),
 )
 
 st.set_xsec(
     13.6,
-    st_tchannel.get_xsec(13.6) + st_twchannel.get_xsec(13.6) + st_schannel.get_xsec(13.6),
+    st_tchannel.get_xsec(13.6) + st_twchannel.get_xsec(13.6), # + st_schannel.get_xsec(13.6),
 )
 
 
