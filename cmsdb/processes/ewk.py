@@ -60,6 +60,10 @@ __all__ = [
     "ww_dl", "ww_sl", "ww_fh",
     "vvv",
     "zzz", "wzz", "wwz", "www",
+    #test
+    "dy_2tau_m50toinf_nj",
+    "dy_2tau_m50toinf_nj_LHEspin_minus",
+    "dy_2tau_m50toinf_nj_LHEspin_plus"
 ]
 
 
@@ -189,6 +193,49 @@ dy_m50toinf_jet = dy.add_process(
     id=51097,
 )
 # ################################################# #
+
+
+
+
+
+
+
+
+
+# test
+dy_2tau_m50toinf_nj = dy_m50toinf.add_process(
+    name="dy_2tau_m50toinf_nj",
+    id=511234,
+)
+dy_2tau_m50toinf_nj.set_xsec(
+    13,
+    dy_m50toinf.get_xsec(13)/3.0,
+)
+dy_2tau_m50toinf_nj.set_xsec(
+    13.6,
+    dy_m50toinf.get_xsec(13.6)/3.0,
+)
+dy_2tau_m50toinf_nj_LHEspin_minus = dy_2tau_m50toinf_nj.add_process(
+    name="dy_2tau_m50toinf_nj_LHEspin_minus",
+    id=511235,
+)
+#dy_2tau_m50toinf_nj_LHEspin_minus.set_xsec(13.0, dy_2tau_m50toinf_nj.get_xsec(13.0)/3.0)
+
+dy_2tau_m50toinf_nj_LHEspin_plus = dy_2tau_m50toinf_nj.add_process(
+    name="dy_2tau_m50toinf_nj_LHEspin_plus",
+    id=511236,
+)
+#dy_2tau_m50toinf_nj_LHEspin_plus.set_xsec(13.0, dy_2tau_m50toinf_nj.get_xsec(13.0)/3.0)
+
+
+
+
+
+
+
+
+
+
 
 #
 # N-jet binned Drell-Yan (scaled to NNLO)
