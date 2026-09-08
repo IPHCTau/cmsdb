@@ -63,7 +63,8 @@ __all__ = [
     #test
     "dy_2tau_m50toinf_nj",
     "dy_2tau_m50toinf_nj_LHEspin_minus",
-    "dy_2tau_m50toinf_nj_LHEspin_plus"
+    "dy_2tau_m50toinf_nj_LHEspin_plus",
+    "dy_2e_or_2mu_m50toinf_nj",
 ]
 
 
@@ -180,12 +181,20 @@ dy_m10to50 = dy.add_process(
 #    name="dy_m50toinf_jet",
 #    id=51097,
 #)
-dy_m50toinf_lep = dy.add_process(
-    name="dy_m50toinf_lep",
+dy_2e_or_2mu_m50toinf_nj = dy_m50toinf.add_process(
+    name="dy_2e_or_2mu_m50toinf_nj",
     id=51099,
 )
-dy_m50toinf_tau = dy.add_process(
-    name="dy_m50toinf_tau",
+dy_2e_or_2mu_m50toinf_nj.set_xsec(
+    13,
+    dy_m50toinf.get_xsec(13),
+)
+dy_2e_or_2mu_m50toinf_nj.set_xsec(
+    13.6,
+    dy_m50toinf.get_xsec(13.6),
+)
+dy_2tau_m50toinf_nj = dy.add_process(
+    name="dy_2tau_m50toinf_nj",
     id=51098,
 )
 dy_m50toinf_jet = dy.add_process(
