@@ -23,7 +23,7 @@ cpn.add_dataset(
     is_data=False,
     processes=[procs.w_lnu_0j],
     keys=['/WJetsToLNu_0J_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIISummer20UL18NanoAODv15-150X_mc2018_realistic_v1-v1/NANOAODSIM'],
-    n_files=56,
+    n_files=81,
     n_events=183585526.0, # this n_events is the gensumwt
     aux={'n_events': 183585526} # n_events in aux is the nEvents produced
 )
@@ -56,7 +56,7 @@ cpn.add_dataset(
     is_data=False,
     processes=[procs.w_lnu],
     keys=['/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL18NanoAODv15-150X_mc2018_realistic_v1-v2/NANOAODSIM'],
-    n_files=81,
+    n_files=56,
     n_events=183585526.0, # this n_events is the gensumwt
     aux={'n_events': 183585526} # n_events in aux is the nEvents produced
 )

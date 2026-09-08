@@ -14,7 +14,9 @@ cpn.add_dataset(
     processes=[procs.dy_2tau_m50toinf_nj],
     #keys=['/DYJetsToTauTau_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8-photos/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v2/NANOAODSIM'],
     keys=['/DYJetsToTauTau_M-50_TuneCP5_13TeV'],
+    #keys=['/DYJetsTo2Tau_M-50_TuneCP5_13TeV'],
     n_files=18,
+    #n_files=1000, #1092
     n_events=25697815101.5459, # this n_events is the gensumwt
     aux={'is_signal': False, 'n_events': 11315669} # n_events in aux is the nEvents produced
 )
